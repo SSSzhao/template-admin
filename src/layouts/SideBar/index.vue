@@ -16,9 +16,9 @@
 <script setup lang="ts">
 import { h, computed } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
-// import { NIcon } from 'naive-ui'
+import { NIcon } from 'naive-ui'
+import iEiLocation from '~icons/ei/location'
 import type { MenuOption } from 'naive-ui'
-// import { LocationOutline as Location } from '@vicons/ionicons5'
 import type { RouteRecordRaw } from 'vue-router'
 import { getRoutes } from '@/router'
 
@@ -46,7 +46,7 @@ const defaultValue = computed(() => {
 })
 
 const renderMenuIcon = (option: MenuOption) => {
-  return '' // h(NIcon, null, { default: () => h(Location) })
+  return h(NIcon, null, { default: () => h(iEiLocation) })
 }
 
 const renderMenuLabel = (option: MenuOption) => {

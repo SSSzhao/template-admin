@@ -6,6 +6,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 import Layouts from 'vite-plugin-vue-layouts'
 import Pages from 'vite-plugin-pages'
 import WindiCSS from 'vite-plugin-windicss'
@@ -28,8 +30,16 @@ export default async (): Promise<UserConfigExport> => {
       }),
       Components({
         dirs: ['src/components'],
-        resolvers: [NaiveUiResolver()],
+        resolvers: [NaiveUiResolver(), IconsResolver()],
         dts: './components.d.ts'
+      }),
+      /**
+       * 图标库 https://icon-sets.iconify.design/
+       * 使用 <i-[collection-id]-[icon-name] />
+       */
+      Icons({
+        compiler: 'vue3',
+        autoInstall: true
       }),
       Layouts(),
       Pages({
